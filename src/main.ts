@@ -1,5 +1,9 @@
+import "dotenv/config";
+import TwitterSearcher from "./twitterSearcher";
+
 const main = () => {
-  console.log("RUN");
+  const { BEARER_TOKEN, SEARCH_QUERY } = process.env;
+  TwitterSearcher(BEARER_TOKEN, SEARCH_QUERY);
 };
 
 main();
