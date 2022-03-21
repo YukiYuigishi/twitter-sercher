@@ -1,9 +1,14 @@
 import "dotenv/config";
-import TwitterSearcher from "./twitterSearcher";
+import { Client, Intents } from "discord.js";
 
-const main = () => {
-  const { BEARER_TOKEN, SEARCH_QUERY } = process.env;
-  TwitterSearcher(BEARER_TOKEN, SEARCH_QUERY);
-};
+const token:string = process.env.DISCORD_TOKEN;
+// Create a new client instance
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-main();
+// When the client is ready, run this code (only once)
+client.once("ready", () => {
+  console.log("Ready!");
+});
+
+// Login to Discord with your client's token
+client.login(token);
